@@ -127,6 +127,7 @@ if(isset($_GET['cari'])){
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
+            margin-right: 5px;
         }
 
         .hapus{
