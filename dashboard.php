@@ -29,72 +29,147 @@ if(isset($_GET['cari'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard Pendaki</title>
+    <title>The Mountainman</title>
 
     <style>
 
-        body{
+        *{
             margin: 0;
-            font-family: Arial;
-            background: #f1f8e9;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .navbar{
-            background: green;
-            color: white;
-            padding: 15px;
-            font-size: 20px;
+        body{
+            font-family: Arial;
+            background-image: url('rinjani.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
+        .overlay{
+            background: rgba(0,0,0,0.5);
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            padding: 20px 50px;
+
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
         }
 
         .judul{
             display: flex;
             align-items: center;
-            font-weight: bold;
-        }
 
-        .menu{
-            color: green;
-            text-decoration: none;
-            background: white;
-            padding: 5px 10px;
-            text-decoration: none;
-            border-radius: 5px;
+            color: white;
+            font-size: 32px;
             font-weight: bold;
         }
 
         .logo{
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
+            margin-right: 15px;
         }
+
+        .nav-right a{
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .menu{
+            background: rgba(255,255,255,0.2);
+        }
+
+        .logout{
+            background: green;
+        }
+
+        .nav-right a:hover{
+            opacity: 0.8;
+        }
+
+        /* HERO */
+
+        .hero{
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero h1{
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .hero p{
+            font-size: 24px;
+        }
+
+        /* CONTAINER */
 
         .container{
             width: 90%;
-            margin: auto;
-            margin-top: 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+            margin: 50px auto;
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            border-radius: 20px;
         }
+
+        .container h2{
+            margin-bottom: 20px;
+        }
+
+        /* BUTTON */
 
         .btn{
             background: green;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 20px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
+
+        .btn:hover{
+            opacity: 0.9;
+        }
+
+        /* SEARCH */
+
+        .search-box{
+            margin-top: 20px;
+        }
+
+        input{
+            padding: 12px;
+            width: 260px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        /* TABLE */
 
         table{
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         table, th, td{
@@ -107,25 +182,22 @@ if(isset($_GET['cari'])){
         }
 
         th, td{
-            padding: 12px;
+            padding: 14px;
             text-align: center;
         }
 
-        .logout{
-            color: green;
-            text-decoration: none;
-            background: white;
-            padding: 5px 10px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-left: 15px;
+        tr:hover{
+            background: #f5f5f5;
         }
+
+        /* AKSI */
+
         .edit{
-            background: yellow;
-            padding: 5px 10px;
+            background: orange;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 6px;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
             margin-right: 5px;
         }
@@ -133,118 +205,134 @@ if(isset($_GET['cari'])){
         .hapus{
             background: red;
             color: white;
-            padding: 5px 10px;
+            padding: 7px 12px;
+            border-radius: 6px;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
         }
 
-        input{
-            padding: 10px;
-            width: 250px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-</style>
+    </style>
 
 </head>
 <body>
 
-<div class="navbar">
+<div class="overlay">
 
-    <div class="judul">
+    <!-- NAVBAR -->
 
-        <img src="logo.jpeg" class="logo">
+    <div class="navbar">
 
-        <span>The Mountainman
+        <div class="judul">
+
+            <img src="logo.jpeg" class="logo">
+
+            <span>The Mountainman</span>
+
+        </div>
+
+        <div class="nav-right">
+
+            <a href="riwayat.php" class="menu">
+                Riwayat
+            </a>
+
+            <a href="logout.php" class="logout">
+                Logout
+            </a>
+
+        </div>
 
     </div>
 
-    <div>
+    <!-- HERO -->
 
-    <a href="riwayat.php" class="menu">
-        Riwayat Pendakian
-    </a>
+    <div class="hero">
 
-    <a href="logout.php" class="logout">
-        Logout
-    </a>
+        <h1>Explore The Mountain</h1>
 
-</div>
+        <p>Sistem Pendataan Pendaki Gunung Modern</p>
 
-</div>
+    </div>
 
-<div class="container">
+    <!-- CONTENT -->
 
-    <h2>Data Pendaki The Mountainman</h2>
+    <div class="container">
 
-    <a href="tambah.php" class="btn">
-        + Tambah Data
-    </a>
+        <h2>Data Pendaki The Mountainman</h2>
 
-    <form method="GET" style="margin-top:20px;">
+        <a href="tambah.php" class="btn">
+            + Tambah Data
+        </a>
 
-    <input type="text"
-    name="cari"
-    placeholder="Cari nama atau asal pendaki"
-    value="<?= $cari; ?>">
+        <!-- SEARCH -->
 
-    <button type="submit" class="btn">
-        Cari
-    </button>
+        <form method="GET" class="search-box">
 
-</form>
+            <input type="text"
+            name="cari"
+            placeholder="Cari nama atau asal pendaki"
+            value="<?= $cari; ?>">
 
-    <table>
+            <button type="submit" class="btn">
+                Cari
+            </button>
 
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Umur</th>
-            <th>Asal</th>
-            <th>Tanggal Naik</th>
-            <th>Tanggal Turun</th>
-            <th>No HP</th>
-            <th>Aksi</th>
-        </tr>
+        </form>
 
-        <?php
-        $no = 1;
+        <!-- TABLE -->
 
-        while($row = mysqli_fetch_assoc($data)){
-        ?>
+        <table>
 
-        <tr>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Umur</th>
+                <th>Asal</th>
+                <th>Tanggal Naik</th>
+                <th>Tanggal Turun</th>
+                <th>No HP</th>
+                <th>Aksi</th>
+            </tr>
 
-            <td><?= $no++; ?></td>
-            <td><?= $row['nama']; ?></td>
-            <td><?= $row['umur']; ?></td>
-            <td><?= $row['asal']; ?></td>
-            <td><?= $row['tanggal_naik']; ?></td>
-            <td><?= $row['tanggal_turun']; ?></td>
-            <td><?= $row['no_hp']; ?></td>
-            <td>
+            <?php
+            $no = 1;
 
-<a href="edit.php?id=<?= $row['id']; ?>" class="edit">
-    Edit
-</a>
+            while($row = mysqli_fetch_assoc($data)){
+            ?>
 
-<a href="hapus.php?id=<?php echo $row['id']; ?>" 
-class="hapus"
-onclick="return confirm('Yakin ingin menghapus data?')">
+            <tr>
 
-    Hapus
+                <td><?= $no++; ?></td>
+                <td><?= $row['nama']; ?></td>
+                <td><?= $row['umur']; ?></td>
+                <td><?= $row['asal']; ?></td>
+                <td><?= $row['tanggal_naik']; ?></td>
+                <td><?= $row['tanggal_turun']; ?></td>
+                <td><?= $row['no_hp']; ?></td>
 
-</a>
+                <td>
 
-</td>
+                    <a href="edit.php?id=<?= $row['id']; ?>" class="edit">
+                        Edit
+                    </a>
 
-        </tr>
+                    <a href="hapus.php?id=<?= $row['id']; ?>"
+                    class="hapus"
+                    onclick="return confirm('Yakin ingin menghapus data?')">
 
-        <?php } ?>
+                        Hapus
 
-    </table>
+                    </a>
+
+                </td>
+
+            </tr>
+
+            <?php } ?>
+
+        </table>
+
+    </div>
 
 </div>
 
