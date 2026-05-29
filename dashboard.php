@@ -236,6 +236,10 @@ if(isset($_GET['cari'])){
                 Riwayat
             </a>
 
+            <a href="statistik.php" class="menu">
+            Statistik
+            </a>
+
             <a href="logout.php" class="logout">
                 Logout
             </a>
